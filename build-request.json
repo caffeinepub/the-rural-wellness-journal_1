@@ -1,0 +1,82 @@
+{
+  "kind": "build_request",
+  "title": "Add Internet Identity authentication with admin-only content management",
+  "projectName": "Rural Wellness Journal",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-9",
+      "text": "Implement Internet Identity authentication so that only the designated admin (Kim Chau) can create, edit, or delete blog posts and portfolio entries. Visitors must be able to read all content freely without logging in. The backend must enforce access control on all write operations (create, update, delete) for both blog posts and portfolio items, rejecting calls from unauthenticated or non-admin principals.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "only you (Kim Chau) can log in to create, edit, or delete blog posts and portfolio entries -- visitors can still read everything freely"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Unauthenticated calls to create/edit/delete blog posts or portfolio items are rejected with an authorization error.",
+        "Non-admin principals cannot invoke write operations.",
+        "All read/list operations remain publicly accessible without authentication.",
+        "The admin principal is tracked and verified server-side."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Add a Login/Logout button to the navigation bar using Internet Identity. When the user is not authenticated, show a 'Login' button. When authenticated as admin, show a 'Logout' button and reveal admin controls (Add Post, Edit, Delete) across the Blog, Portfolio, and Admin pages. Admin controls must be completely hidden from the UI for unauthenticated visitors.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "A Login button in the navigation",
+          "All 'Add Post,' 'Edit,' and 'Delete' controls are hidden until you're logged in"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation displays a 'Login' button when the user is not authenticated.",
+        "Navigation displays a 'Logout' button when the user is authenticated.",
+        "Add Post, Edit, and Delete controls are not visible to unauthenticated users on any page.",
+        "Admin controls appear immediately after successful Internet Identity login.",
+        "Clicking Login triggers the Internet Identity authentication flow.",
+        "Clicking Logout ends the session and hides admin controls."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Protect the Admin Blog and Admin Portfolio pages (AdminBlogPage, AdminPortfolioPage) so they redirect or show an 'Access Denied' message if the current user is not authenticated and confirmed as admin. The CreateBlogPostForm and CreatePortfolioForm must only be reachable by the authenticated admin.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-7"
+        ],
+        "quotes": [
+          "only you can manage and update journal entries"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating to /admin/blog or /admin/portfolio without being logged in shows an access-denied state or redirects to the homepage.",
+        "After logging in as the admin principal, both admin pages render their respective forms.",
+        "Non-admin authenticated users see an access-denied message on admin pages."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use Internet Identity exclusively for authentication — no passwords or third-party OAuth providers.",
+    "All public read operations (list/get blog posts, list/get portfolio items) must remain accessible without authentication.",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts — compose logic around them."
+  ],
+  "nonGoals": [
+    "Multi-user or role-based access beyond a single admin principal.",
+    "User registration or profile creation for visitors.",
+    "Email or social login methods.",
+    "Any changes to the existing visual theme or page layouts beyond adding the Login/Logout button and toggling admin control visibility."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

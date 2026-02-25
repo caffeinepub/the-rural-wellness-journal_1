@@ -1,0 +1,81 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-25T04:34:23.880Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 3,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Add a Login/Logout button to the navigation bar using Internet Identity. When the user is not authenticated, show a 'Login' button. When authenticated as admin, show a 'Logout' button and reveal admin controls (Add Post, Edit, Delete) across the Blog, Portfolio, and Admin pages. Admin controls must be completely hidden from the UI for unauthenticated visitors.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/layout/Navigation.tsx",
+          "frontend/src/components/blog/BlogPostCard.tsx",
+          "frontend/src/pages/BlogDetailPage.tsx",
+          "frontend/src/components/portfolio/PortfolioCard.tsx",
+          "frontend/src/pages/PortfolioPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/blog/BlogPostCard.tsx",
+          "frontend/src/pages/BlogDetailPage.tsx",
+          "frontend/src/components/portfolio/PortfolioCard.tsx",
+          "frontend/src/pages/PortfolioPage.tsx",
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Protect the Admin Blog and Admin Portfolio pages (AdminBlogPage, AdminPortfolioPage) so they redirect or show an 'Access Denied' message if the current user is not authenticated and confirmed as admin. The CreateBlogPostForm and CreatePortfolioForm must only be reachable by the authenticated admin.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/AdminBlogPage.tsx",
+          "frontend/src/pages/AdminPortfolioPage.tsx",
+          "frontend/src/components/auth/AccessDeniedScreen.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/AdminBlogPage.tsx",
+          "frontend/src/pages/AdminPortfolioPage.tsx",
+          "frontend/src/components/auth/AccessDeniedScreen.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Implement Internet Identity authentication so that only the designated admin (Kim Chau) can create, edit, or delete blog posts and portfolio entries. Visitors must be able to read all content freely without logging in. The backend must enforce access control on all write operations (create, update, delete) for both blog posts and portfolio items, rejecting calls from unauthenticated or non-admin principals.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/auth/AccessDeniedScreen.tsx",
+    "frontend/src/components/blog/BlogPostCard.tsx",
+    "frontend/src/components/portfolio/PortfolioCard.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/AdminBlogPage.tsx",
+    "frontend/src/pages/AdminPortfolioPage.tsx",
+    "frontend/src/pages/BlogDetailPage.tsx",
+    "frontend/src/pages/BlogListingPage.tsx",
+    "frontend/src/pages/PortfolioPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

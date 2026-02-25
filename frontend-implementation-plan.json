@@ -1,0 +1,77 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Internet Identity authentication with admin-only content management",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Add Login/Logout button to navigation bar using Internet Identity and conditionally display admin controls based on authentication status",
+      "acceptanceCriteria": [
+        "Navigation displays a 'Login' button when the user is not authenticated.",
+        "Navigation displays a 'Logout' button when the user is authenticated.",
+        "Add Post, Edit, and Delete controls are not visible to unauthenticated users on any page.",
+        "Admin controls appear immediately after successful Internet Identity login.",
+        "Clicking Login triggers the Internet Identity authentication flow.",
+        "Clicking Logout ends the session and hides admin controls."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/layout/Navigation.tsx",
+          "operation": "modify",
+          "description": "Replace the existing admin links visibility logic with conditional rendering based on the isCallerAdmin query result. Use the authorization component's isCallerAdmin backend capability to determine whether to show admin navigation links (Admin Blog, Admin Portfolio). Verify the component's usage instructions before implementing. The Login/Logout button already exists; ensure it properly toggles based on Internet Identity authentication state."
+        },
+        {
+          "path": "frontend/src/components/blog/BlogPostCard.tsx",
+          "operation": "modify",
+          "description": "Add conditional Edit and Delete action buttons that only render when the user is authenticated as admin (using isCallerAdmin query). These buttons should be completely hidden from the UI for unauthenticated visitors. Include onClick handlers that will invoke edit/delete flows."
+        },
+        {
+          "path": "frontend/src/pages/BlogDetailPage.tsx",
+          "operation": "modify",
+          "description": "Add conditional Edit and Delete buttons for the displayed blog post, visible only when the user is authenticated as admin (using isCallerAdmin query). Wire these buttons to trigger edit and delete mutations from useQueries hooks."
+        },
+        {
+          "path": "frontend/src/components/portfolio/PortfolioCard.tsx",
+          "operation": "modify",
+          "description": "Add conditional Edit and Delete action buttons that only appear when the user is authenticated as admin (using isCallerAdmin query). Include onClick handlers that will invoke edit/delete flows for portfolio items."
+        },
+        {
+          "path": "frontend/src/pages/PortfolioPage.tsx",
+          "operation": "modify",
+          "description": "Wire in conditional Edit and Delete controls on individual portfolio items in the grid view, visible only to authenticated admins (using isCallerAdmin query). Ensure the controls integrate with the existing lightbox and card components."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add a useIsCallerAdmin query hook that calls the backend isCallerAdmin capability. This hook will be used throughout the frontend to conditionally render admin controls. Use the authorization component to support this capability. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Protect Admin Blog and Admin Portfolio pages with authentication and admin role checks, showing access-denied state for unauthenticated or non-admin users",
+      "acceptanceCriteria": [
+        "Navigating to /admin/blog or /admin/portfolio without being logged in shows an access-denied state or redirects to the homepage.",
+        "After logging in as the admin principal, both admin pages render their respective forms.",
+        "Non-admin authenticated users see an access-denied message on admin pages."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/AdminBlogPage.tsx",
+          "operation": "modify",
+          "description": "Replace the current authentication check with a comprehensive guard that checks both Internet Identity authentication state and the isCallerAdmin query result. Display an access-denied message or redirect to the homepage when the user is not authenticated or not an admin. Only render CreateBlogPostForm when both checks pass. Use the authorization component to enforce admin-only access. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/AdminPortfolioPage.tsx",
+          "operation": "modify",
+          "description": "Replace the current authentication check with a comprehensive guard that checks both Internet Identity authentication state and the isCallerAdmin query result. Display an access-denied message or redirect to the homepage when the user is not authenticated or not an admin. Only render CreatePortfolioForm when both checks pass. Use the authorization component to enforce admin-only access. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/AccessDeniedScreen.tsx",
+          "operation": "create",
+          "description": "Create a reusable AccessDeniedScreen component that displays a user-friendly 'Access Denied' message with an option to return to the homepage or login. This component will be used by admin pages when authorization checks fail. Use the authorization component pattern for displaying unauthorized access states. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

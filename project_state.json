@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "A digital portfolio and blog called 'The Rural Wellness Journal' documenting mental health perceptions and healthcare accessibility in rural Vietnam (Càng Long), maintained by Kim Chau, a U.S. high school student and aspiring PMHNP. Features a blog, portfolio, and about page with personal stories, interviews, clinical observations, and photo essays.",
+  "architectural_notes": [
+    "Project is a static digital portfolio/blog site — no backend or CMS required for initial build",
+    "About page bio text is fixed/pre-written by the user and must be reproduced verbatim",
+    "Portrait and field photo image slots should use placeholder UI (e.g., placeholder box or upload button) rather than generated AI images, to be replaced with real photos by the user",
+    "Authentication uses Internet Identity (passkey/Google/Apple/Microsoft); no password required. Admin controls are gated behind login; all content remains publicly readable."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-blog-section-where-posts-can-be-created-and-stored-in-the-backend-each-post-should-have-a-title-body-content-category-personal-story-interview-or-clinical-observation-publication-date-and-an-optional-featured-image-url-display-posts-in-a-card-grid-on-the-blog-listing-page-and-render-a-full-post-detail-view-when-a-post-is-selected",
+      "title": "Create a Blog section where posts can be created and stored in the backend. Each post should have a title, body content, category (Personal Story, Interview, or Clinical Observation), publication date, and an optional featured image URL. Display posts in a card grid on the Blog listing page, and render a full post detail view when a post is selected.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-portfolio-section-that-showcases-photo-essays-documenting-healthcare-accessibility-in-rural-vietnam-each-portfolio-item-should-have-a-title-description-a-collection-of-image-urls-and-a-location-tag-defaulting-to-c-ng-long-vietnam-display-items-in-a-masonry-or-grid-gallery-layout-with-a-lightbox-view-for-image-enlargement",
+      "title": "Create a Portfolio section that showcases photo essays documenting healthcare accessibility in rural Vietnam. Each portfolio item should have a title, description, a collection of image URLs, and a location tag (defaulting to Càng Long, Vietnam). Display items in a masonry or grid gallery layout with a lightbox view for image enlargement.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-about-page-with-a-the-story-behind-the-journal-section-the-text-must-read-exactly-this-journal-is-maintained-by-kim-chau-a-dedicated-high-school-student-in-the-u-s-and-an-aspiring-psychiatric-mental-health-nurse-practitioner-pmhnp-having-deep-roots-in-c-ng-long-vietnam-i-created-this-project-to-document-the-mental-health-landscape-and-healthcare-accessibility-in-my-hometown-through-personal-stories-interviews-with-community-members-and-clinical-observations-this-journal-aims-to-bridge-the-gap-between-rural-experiences-and-modern-healthcare-insights-my-work-is-driven-by-a-commitment-to-healthcare-equity-and-the-belief-that-every-community-deserves-compassionate-culturally-informed-mental-health-support-include-a-portrait-placeholder-image-alongside-the-bio-text",
+      "title": "Create an About page with a 'The Story Behind the Journal' section. The text must read exactly: 'This journal is maintained by Kim Chau, a dedicated high school student in the U.S. and an aspiring Psychiatric-Mental Health Nurse Practitioner (PMHNP). Having deep roots in Càng Long, Vietnam, I created this project to document the mental health landscape and healthcare accessibility in my hometown. Through personal stories, interviews with community members, and clinical observations, this journal aims to bridge the gap between rural experiences and modern healthcare insights. My work is driven by a commitment to healthcare equity and the belief that every community deserves compassionate, culturally-informed mental health support.' Include a portrait placeholder image alongside the bio text.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-homepage-landing-page-for-the-rural-wellness-journal-with-a-hero-section-displaying-the-journal-name-and-a-one-line-mission-statement-navigation-links-to-blog-portfolio-and-about-and-a-featured-posts-preview-section-showing-the-three-most-recent-blog-posts",
+      "title": "Create a homepage (landing page) for The Rural Wellness Journal with a hero section displaying the journal name and a one-line mission statement, navigation links to Blog, Portfolio, and About, and a featured posts preview section showing the three most recent blog posts.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-visual-theme-across-the-entire-application-inspired-by-rural-vietnamese-landscapes-warm-earth-tones-terracotta-muted-sage-green-warm-cream-ivory-backgrounds-clean-humanist-typography-and-a-calm-editorial-layout-that-evokes-authenticity-and-compassion-use-this-palette-and-type-system-consistently-across-all-pages-and-components",
+      "title": "Apply a cohesive visual theme across the entire application inspired by rural Vietnamese landscapes: warm earth tones (terracotta, muted sage green, warm cream/ivory backgrounds), clean humanist typography, and a calm editorial layout that evokes authenticity and compassion. Use this palette and type system consistently across all pages and components.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-render-all-generated-image-assets-hero-background-portrait-placeholder-and-decorative-imagery-as-static-files-served-from-frontend-public-assets-generated",
+      "title": "Render all generated image assets (hero background, portrait placeholder, and decorative imagery) as static files served from frontend/public/assets/generated.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-the-about-page-replace-the-ai-generated-avatar-illustration-currently-shown-as-the-portrait-with-a-styled-image-placeholder-element-the-placeholder-should-display-a-dashed-border-a-camera-or-person-icon-and-the-label-add-your-photo-to-clearly-indicate-it-is-reserved-for-the-user-s-real-portrait-photo-remove-any-reference-to-the-ai-generated-portrait-asset-from-this-component",
+      "title": "On the About page, replace the AI-generated avatar illustration currently shown as the portrait with a styled image placeholder element. The placeholder should display a dashed border, a camera or person icon, and the label 'Add Your Photo' to clearly indicate it is reserved for the user's real portrait photo. Remove any reference to the AI-generated portrait asset from this component.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-across-all-image-bearing-sections-of-the-site-including-blog-post-cards-and-detail-pages-featured-image-area-portfolio-cards-and-lightbox-cover-image-and-gallery-image-slots-and-the-homepage-featured-posts-preview-replace-any-ai-generated-decorative-imagery-or-empty-broken-image-states-with-a-consistent-styled-placeholder-each-placeholder-should-display-a-dashed-border-a-landscape-photo-icon-and-the-label-field-photo-coming-soon-to-indicate-reserved-space-for-personal-field-photos-placeholders-must-be-used-whenever-a-post-or-portfolio-item-has-no-image-url-supplied",
+      "title": "Across all image-bearing sections of the site — including Blog post cards and detail pages (featured image area), Portfolio cards and lightbox (cover image and gallery image slots), and the HomePage featured posts preview — replace any AI-generated decorative imagery or empty/broken image states with a consistent styled placeholder. Each placeholder should display a dashed border, a landscape/photo icon, and the label 'Field Photo Coming Soon' to indicate reserved space for personal field photos. Placeholders must be used whenever a post or portfolio item has no image URL supplied.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-login-logout-button-to-the-navigation-bar-using-internet-identity-when-the-user-is-not-authenticated-show-a-login-button-when-authenticated-as-admin-show-a-logout-button-and-reveal-admin-controls-add-post-edit-delete-across-the-blog-portfolio-and-admin-pages-admin-controls-must-be-completely-hidden-from-the-ui-for-unauthenticated-visitors",
+      "title": "Add a Login/Logout button to the navigation bar using Internet Identity. When the user is not authenticated, show a 'Login' button. When authenticated as admin, show a 'Logout' button and reveal admin controls (Add Post, Edit, Delete) across the Blog, Portfolio, and Admin pages. Admin controls must be completely hidden from the UI for unauthenticated visitors.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-protect-the-admin-blog-and-admin-portfolio-pages-adminblogpage-adminportfoliopage-so-they-redirect-or-show-an-access-denied-message-if-the-current-user-is-not-authenticated-and-confirmed-as-admin-the-createblogpostform-and-createportfolioform-must-only-be-reachable-by-the-authenticated-admin",
+      "title": "Protect the Admin Blog and Admin Portfolio pages (AdminBlogPage, AdminPortfolioPage) so they redirect or show an 'Access Denied' message if the current user is not authenticated and confirmed as admin. The CreateBlogPostForm and CreatePortfolioForm must only be reachable by the authenticated admin.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Blog section with personal stories, interviews, and clinical observations about mental health in rural Vietnam",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Portfolio section showcasing photo essays documenting healthcare accessibility",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "About page with 'The Story Behind the Journal' section featuring Kim Chau's bio as an aspiring PMHNP with roots in Càng Long, Vietnam",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Replace AI avatar on About page with an image placeholder or Upload button for the user's real photo; ensure all image sections across the site have placeholders for personal field photos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add authentication using Internet Identity so only Kim Chau can create, edit, or delete blog posts and portfolio entries; visitors can still read all content freely. Login button in navigation; admin controls hidden until logged in.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement Internet Identity authentication so that only the designated admin (Kim Chau) can create, edit, or delete blog posts and portfolio entries. Visitors must be able to read all content freely without logging in. The backend must enforce access control on all write operations (create, update, delete) for both blog posts and portfolio items, rejecting calls from unauthenticated or non-admin principals.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "The Rural Wellness Journal",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
